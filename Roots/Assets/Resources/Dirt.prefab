@@ -124,8 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75ddcf183de13141b207ec3a589aab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
+  hightlightColor: {r: 1, g: 0.63645667, b: 0.61698115, a: 1}
   renderer: {fileID: 3378153264506184868}
-  color: {r: 0.09404941, g: 0.08380205, b: 0.41509432, a: 0.4117647}
-  color0: {r: 0, g: 0, b: 0, a: 0}
-  highlightMaterial: {fileID: 2100000, guid: fd69421e2be2a5b4bb024d57df8b553b, type: 2}

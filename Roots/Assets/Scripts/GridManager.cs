@@ -29,6 +29,7 @@ public class GridManager : MonoBehaviour
                 GameObject tile = (GameObject)Instantiate(referenceTile, transform);
                 float posX = col * tileSize;
                 float posY = row * -tileSize;
+                tile.name = $"Dirt_{posX}_{posY}";
 
                 tile.transform.position = new Vector2(posX, posY);
 
