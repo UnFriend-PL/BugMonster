@@ -28,8 +28,8 @@ public class GridManager : MonoBehaviour
             for(int col =0; col < cols; col++)
             {
                 GameObject tile = (GameObject)Instantiate(tileType, transform);
-                float posX = col * tileSize;
-                float posY = row * -tileSize;
+                float posX = row * tileSize;
+                float posY = col * -tileSize;
                 tile.name = $"{tileType.name}_{posX}_{posY}";
 
                 tile.transform.position = new Vector2(posX, posY);
