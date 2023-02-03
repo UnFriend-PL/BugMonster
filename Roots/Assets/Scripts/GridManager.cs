@@ -11,6 +11,8 @@ public class GridManager : MonoBehaviour
     private int cols = 16;
     [SerializeField]
     private float tileSize = 1;
+    [SerializeField]
+    private GameObject tileType;
 
 
     // Start is called before the first frame update
@@ -21,21 +23,19 @@ public class GridManager : MonoBehaviour
 
     private void GenerateGrid()
     {
-        GameObject referenceTile = (GameObject)Instantiate(Resources.Load("Dirt"));
         for(int row=0; row < rows; row++)
         {
             for(int col =0; col < cols; col++)
             {
-                GameObject tile = (GameObject)Instantiate(referenceTile, transform);
+                GameObject tile = (GameObject)Instantiate(tileType, transform);
                 float posX = col * tileSize;
                 float posY = row * -tileSize;
-                tile.name = $"Dirt_{posX}_{posY}";
+                tile.name = $"{tileType.name}_{posX}_{posY}";
 
                 tile.transform.position = new Vector2(posX, posY);
 
             }
         }
-        Destroy(referenceTile);
 
         float gridW = cols * tileSize;
         float gridH = rows * tileSize;
