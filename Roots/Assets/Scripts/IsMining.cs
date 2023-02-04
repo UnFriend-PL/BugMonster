@@ -6,7 +6,7 @@ public class IsMining : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        GetObject<Block>().type = blockType.Background;
-        Debug.Log(transform.position);
+        //GetObject<Block>().type = blockType.Background;
+        //Debug.Log(transform.position);
     }
 }
