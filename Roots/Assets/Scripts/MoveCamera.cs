@@ -6,7 +6,9 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
     [SerializeField] private float speed = 7.0f;
-    void Update()
+	[SerializeField] private float camSpeed = 0.015f;
+
+	void Update()
     {
         if(Input.GetKey(KeyCode.D))
         {
@@ -28,14 +30,14 @@ public class MoveCamera : MonoBehaviour
 		{
 			if (Camera.main.orthographicSize > 1)
 			{
-				Camera.main.orthographicSize -= 0.015f;
+				Camera.main.orthographicSize -= camSpeed;
 			}
 		}
 		if (Input.GetKey(KeyCode.Q))
 		{
 			if (Camera.main.orthographicSize < 15)
 			{
-				Camera.main.orthographicSize += 0.015f;
+				Camera.main.orthographicSize += camSpeed;
 			}
 		}
 	}
