@@ -151,6 +151,7 @@ MonoBehaviour:
   speed: 0.5
   renderer: {fileID: 3000416973516906640}
   hightlightColor: {r: 0.5, g: 0, b: 0, a: 1}
+  agent: {fileID: 0}
 --- !u!195 &-7736909519070799002
 NavMeshAgent:
   m_ObjectHideFlags: 0
