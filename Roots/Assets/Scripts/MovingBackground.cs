@@ -5,19 +5,26 @@ using UnityEngine;
 public class MovingBackground : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float radius = 5.0f;
+    public bool direction = true;
 
-    private float angle;
-
-    // Update is called once per frame
     void Update()
     {
-        angle += speed * Time.deltaTime;
-
-        float x = Mathf.Cos(angle) * radius;
-        float y = Mathf.Sin(angle) * radius;
-
-        transform.position = new Vector3(x, y, 0);
-
+        var x = speed * Time.deltaTime;
+        if (direction == true)
+        {
+            transform.position -= new Vector3(x, 0, 0);
+            if (transform.position.x < -1000)
+            {
+            direction = !direction;
+            }
+        }
+        else
+        {
+            transform.position += new Vector3(x, 0, 0);
+            if (transform.position.x > 2900)
+            {
+            direction = !direction;
+            }
+        }
     }
 }
