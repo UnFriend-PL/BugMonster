@@ -6,15 +6,22 @@ public class PickResource : MonoBehaviour
 {
 
     [SerializeField] private string chosenTag;
-    [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private GameObject value;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == chosenTag)
         {
-            scoreManager.countOfFood++;
+            value.GetComponent<ScoreManager>().countOfDirt++;
             Destroy(collision.gameObject);
+            value.GetComponent<ScoreManager>().Start();
         }
-        Debug.Log(scoreManager.countOfFood + " pkt");
+    }
+
+    private enum foodType {
+        leaf,
+        blueberry,
+        larva,
+        food
     }
 }

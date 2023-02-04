@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Roots/Assets/Scenes/szymonFixedGrids 1/NavMesh-NavMesh.asset.meta
+guid: f74d9d70f7aaa6f458135ade327c803b
+========
+guid: f00133e4587342f4cbe772ba7452a0e3
+>>>>>>>> 0b0eeb4c87f4f919d2845632703f6bd644311afb:Roots/Assets/Scenes/DominikGrid/NavMesh-NavMesh.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,17 +4,40 @@ using UnityEngine;
 
 public class HighlightTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private Color hightlightColor = new Color(0.5f, 0,0,1);
+    [SerializeField] private Color hightlightColor = new Color(0.5f, 0, 0, 1);
     [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private Color orginalColor = new Color(1, 1, 1, 1);
 
-	private void OnMouseEnter()
+    private void FixedUpdate()
     {
-		renderer.color = hightlightColor;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.transform == transform)
+            {
+                renderer.color = hightlightColor;
+                return;
+            }
+        }
+        renderer.color = orginalColor;
     }
 
-    private void OnMouseExit()
-    {
-		renderer.color = new Color(1, 1, 1, 1);
-    }
+    //private void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if(collider.gameObject.tag == "Mouse")
+    //    {
+    //        renderer.color = hightlightColor;
+    //        Debug.Log("TILE");
+    //    }
+    //    Debug.Log("enter");
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collider)
+    //{
+    //    if(collider.gameObject.tag == "Mouse")
+    //    {
+    //        renderer.color = orginalColor;
+    //    }
+    //}
 }

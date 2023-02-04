@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SelectAnt : MonoBehaviour
 {
@@ -12,16 +13,29 @@ public class SelectAnt : MonoBehaviour
     public float speed = 0.5f;
 	[SerializeField] private SpriteRenderer renderer;
 	[SerializeField] private Color hightlightColor = new Color(0.5f, 0, 0, 1);
+    [SerializeField] NavMeshAgent agent;
+    void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+    }
 
-	void Start()
+
+    void Start()
     {
         SelecTile.selectedTile += OnTileSelected;
     }
 
+    Vector2 lastPos;
     private void FixedUpdate()
     {
-			var body = GetComponent<Rigidbody2D>();
-			body.MovePosition(Vector2.Lerp(body.position, secondPos, speed * Time.fixedDeltaTime));
+        SetAgentPosition();
+        var deltaPos = (Vector2)transform.position-lastPos;
+        if (deltaPos.magnitude > 0.001f)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg - 90);
+        }
+        lastPos = transform.position;
     }
 
     private void OnDestroy()
@@ -39,6 +53,7 @@ public class SelectAnt : MonoBehaviour
 				secondPos.x - transform.position.x,
 				secondPos.y - transform.position.y,
 				secondPos.z - transform.position.z);
+            direction.z = -1;
 			transform.up = direction;
 
             isSelected = false;
@@ -52,12 +67,9 @@ public class SelectAnt : MonoBehaviour
 		renderer.color = hightlightColor;
 	}
 
-	/*private void Update()
-	{
-        if (Input.GetButtonDown("Fire1"))
-        {
-            isSelected = false;
-			renderer.color = new Color(1, 1, 1, 1);
-		}
-	}*/
+    void SetAgentPosition()
+    {
+        agent.SetDestination(new Vector3(secondPos.x, secondPos.y, transform.position.z));
+        //agent.transform.rotation = Quaternion.LookRotation(secondPos - transform.position, Vector3.forward);
+    }
 }

@@ -15,4 +15,8 @@ public class SelecTile : MonoBehaviour
             selectedTile?.Invoke(targetPos);
         }
     }
+    private void OnMouseOver()
+    {
+        Debug.Log("TILE");
+    }
 }
