@@ -9,9 +9,11 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text countOfDirtText;
 
 
-    int countOfDirt = 0;
+    public int countOfDirt = 0;
+    public int countOfFood = 0;
+    
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         countOfDirtText.text = $"{countOfDirt} Points";
     }
