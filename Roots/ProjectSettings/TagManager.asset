@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ant
   - Food
+  - Block
   layers:
   - Default
   - TransparentFX

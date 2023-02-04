@@ -17,4 +17,11 @@ public class PickResource : MonoBehaviour
             value.GetComponent<ScoreManager>().Start();
         }
     }
+
+    private enum foodType {
+        leaf,
+        blueberry,
+        larva,
+        food
+    }
 }

@@ -8,6 +8,7 @@ public class IsMining : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D coll)
     {
-        GetComponent<Block>().Mine();
+        //GetObject<Block>().type = blockType.Background;
+        //Debug.Log(transform.position);
     }
 }
