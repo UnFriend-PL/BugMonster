@@ -6,19 +6,21 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField]
-    private int rows = 10;
+    private int rows = 32;
     [SerializeField]
-    private int cols = 16;
+    private int cols = 32;
     [SerializeField]
     private float tileSize = 1;
     [SerializeField]
     private GameObject tileType;
+	[SerializeField]
+	private bool hasStartingArea = false;
 
 
-    // Start is called before the first frame update
-    void Start()
+	void Start()
     {
         GenerateGrid();
+        if(hasStartingArea) GenerateStartingArea();
     }
 
     private void GenerateGrid()
@@ -42,19 +44,16 @@ public class GridManager : MonoBehaviour
         transform.position = new Vector2(-gridW/2 + tileSize /2, gridH/2 - tileSize /2);
 
     }
-    private Color startcolor;
-    void OnMouseEnter()
+
+    private void GenerateStartingArea()
     {
-        startcolor = GetComponent<Renderer>().material.color;
-        GetComponent<Renderer>().material.color = Color.yellow;
-    }
-    void OnMouseExit()
-    {
-        GetComponent<Renderer>().material.color = startcolor;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		//for (int x = 30; x != 33; x++)
+        for (int x = (rows / 2) - 2; x != (rows / 2) + 1; x++)
+			for (int y = (cols / 2) - 3; y != (cols / 2) + 2; y++)
+				Destroy(GameObject.Find($"{tileType.name}_{y}_-{x}"));
+		for (int y = (cols / 2) - 2; y != (cols / 2) + 1; y++)
+			Destroy(GameObject.Find($"{tileType.name}_{y}_-{(rows / 2) - 3}"));
+		for (int y = (cols / 2) - 2; y != (cols / 2) + 1; y++)
+			Destroy(GameObject.Find($"{tileType.name}_{y}_-{(rows / 2) + 1}"));
+	}
 }
