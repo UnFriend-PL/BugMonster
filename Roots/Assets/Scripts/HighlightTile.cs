@@ -8,36 +8,40 @@ public class HighlightTile : MonoBehaviour
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private Color orginalColor = new Color(1, 1, 1, 1);
 
-    private void FixedUpdate()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
-        {
-            if(hit.transform == transform)
-            {
-                renderer.color = hightlightColor;
-                return;
-            }
-        }
-        renderer.color = orginalColor;
-    }
-
-    //private void OnTriggerEnter2D(Collider2D collider)
+    //private void FixedUpdate()
     //{
-    //    if(collider.gameObject.tag == "Mouse")
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(ray, out hit))
     //    {
-    //        renderer.color = hightlightColor;
-    //        Debug.Log("TILE");
+    //        if (hit.transform == transform)
+    //        {
+    //            renderer.color = hightlightColor;
+    //            Debug.Log("TILE");
+    //            return;
+    //        }
     //    }
-    //    Debug.Log("enter");
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collider)
-    //{
-    //    if(collider.gameObject.tag == "Mouse")
+    //    else
     //    {
     //        renderer.color = orginalColor;
     //    }
     //}
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Mouse")
+        {
+            renderer.color = hightlightColor;
+            Debug.Log("TILE");
+        }
+        Debug.Log("enter");
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Mouse")
+        {
+            renderer.color = orginalColor;
+        }
+    }
 }
