@@ -18,7 +18,6 @@ public class SelectAnt : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-        agent.updateUpAxis = false;
     }
 
 
@@ -27,10 +26,16 @@ public class SelectAnt : MonoBehaviour
         SelecTile.selectedTile += OnTileSelected;
     }
 
+    Vector2 lastPos;
     private void FixedUpdate()
     {
-			var body = GetComponent<Rigidbody2D>();
-			body.MovePosition(Vector2.Lerp(body.position, secondPos, speed * Time.fixedDeltaTime));
+        SetAgentPosition();
+        var deltaPos = (Vector2)transform.position-lastPos;
+        if (deltaPos.magnitude > 0.001f)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg - 90);
+        }
+        lastPos = transform.position;
     }
 
     private void OnDestroy()
@@ -48,6 +53,7 @@ public class SelectAnt : MonoBehaviour
 				secondPos.x - transform.position.x,
 				secondPos.y - transform.position.y,
 				secondPos.z - transform.position.z);
+            direction.z = -1;
 			transform.up = direction;
 
             isSelected = false;
@@ -61,13 +67,9 @@ public class SelectAnt : MonoBehaviour
 		renderer.color = hightlightColor;
 	}
 
-    private void Update()
-    {
-        SetAgentPosition();
-    }
-
     void SetAgentPosition()
     {
         agent.SetDestination(new Vector3(secondPos.x, secondPos.y, transform.position.z));
+        //agent.transform.rotation = Quaternion.LookRotation(secondPos - transform.position, Vector3.forward);
     }
 }
