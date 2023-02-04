@@ -24,14 +24,14 @@ public class MoveCamera : MonoBehaviour
 		{
 			transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
 		}
-		if (Input.GetKey(KeyCode.Q))
+		if (Input.GetKey(KeyCode.E))
 		{
 			if (Camera.main.orthographicSize > 1)
 			{
 				Camera.main.orthographicSize -= 0.015f;
 			}
 		}
-		if (Input.GetKey(KeyCode.E))
+		if (Input.GetKey(KeyCode.Q))
 		{
 			if (Camera.main.orthographicSize < 15)
 			{

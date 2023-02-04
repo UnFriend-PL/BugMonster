@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class SelectAnt : MonoBehaviour
 {
-    public int HP;
+    //public int HP;
+    bool isSelected = false;
 
     Vector3 firstPos, secondPos;
     public float speed = 0.5f;
+	[SerializeField] private SpriteRenderer renderer;
+	[SerializeField] private Color hightlightColor = new Color(0.5f, 0, 0, 1);
 
-    void Start()
+	void Start()
     {
         SelecTile.selectedTile += OnTileSelected;
-
     }
 
     private void FixedUpdate()
     {
-        var body = GetComponent<Rigidbody2D>();
-        body.MovePosition(Vector2.Lerp(body.position,secondPos,speed*Time.fixedDeltaTime));
-
-
+			var body = GetComponent<Rigidbody2D>();
+			body.MovePosition(Vector2.Lerp(body.position, secondPos, speed * Time.fixedDeltaTime));
     }
 
     private void OnDestroy()
@@ -30,27 +30,34 @@ public class SelectAnt : MonoBehaviour
     }
     private void OnTileSelected(Vector3 obj)
     {
-        if (obj == firstPos)
+        if(isSelected)
         {
-            return;
-        }
-        Debug.Log($"{obj} - tile");
-        secondPos = obj;
+			Debug.Log($"{obj} - tile");
+			secondPos = obj;
 
-        Vector3 direction = new Vector3(
-            secondPos.x - transform.position.x,
-            secondPos.y - transform.position.y,
-            secondPos.z - transform.position.z);
-        transform.up = direction;
+			Vector3 direction = new Vector3(
+				secondPos.x - transform.position.x,
+				secondPos.y - transform.position.y,
+				secondPos.z - transform.position.z);
+			transform.up = direction;
+
+            isSelected = false;
+			renderer.color = new Color(1, 1, 1, 1);
+		}
     }
 
-    private void OnMouseOver()
+    private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(1))
+        isSelected = true;
+		renderer.color = hightlightColor;
+	}
+
+	/*private void Update()
+	{
+        if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 position = transform.position;
-            firstPos = position;
-            Debug.Log($"{position} - ant");
-        }
-    }
+            isSelected = false;
+			renderer.color = new Color(1, 1, 1, 1);
+		}
+	}*/
 }
