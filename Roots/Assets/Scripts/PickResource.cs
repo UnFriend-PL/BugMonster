@@ -18,4 +18,11 @@ public class PickResource : MonoBehaviour
         }
         Debug.Log(value.GetComponent<ScoreManager>().countOfDirt + " pkt");
     }
+
+    private enum foodType {
+        leaf,
+        blueberry,
+        larva,
+        food
+    }
 }
