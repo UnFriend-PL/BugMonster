@@ -7,6 +7,7 @@ public class Block : MonoBehaviour
     private bool isWalkable = true;
 	private bool isDestructable = true;
     public bool miningWood = false;
+	[SerializeField] public bool isFoggy = true;
 	[SerializeField] blockType type;
     [SerializeField] Sprite BackgroundSprite;
     [SerializeField] Sprite DirtSprite;
@@ -17,6 +18,7 @@ public class Block : MonoBehaviour
 	[SerializeField] Sprite RootEndRightSprite;
 	[SerializeField] Sprite RootEndUpSprite;
 	[SerializeField] Sprite RootEndDownSprite;
+	[SerializeField] Sprite FogSprite;
 
 	private void Start()
     {
@@ -86,10 +88,9 @@ public class Block : MonoBehaviour
 				isDestructable = miningWood;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
 				break;
-
-
 		}
-    }
+		if(isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
+	}
 
     public enum blockType
     {
