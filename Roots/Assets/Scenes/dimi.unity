@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805596206}
   - component: {fileID: 1805596205}
+  - component: {fileID: 1805596207}
   m_Layer: 0
   m_Name: GenerateGrid(Background)
   m_TagString: Untagged
@@ -153,9 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rows: 64
-  cols: 32
+  cols: 64
   tileSize: 1
   tileType: {fileID: 6614932174187711148, guid: af9a2e630cd598e41921f4f746d67608, type: 3}
+  hasStartingArea: 0
 --- !u!4 &1805596206
 Transform:
   m_ObjectHideFlags: 0
@@ -171,6 +173,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1805596207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805596204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75ddcf183de13141b207ec3a589aab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hightlightColor: {r: 0.9811321, g: 0.38319683, b: 0.38319683, a: 1}
+  renderer: {fileID: 0}
+  highlightable: 0
 --- !u!1 &2029025679
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +283,7 @@ GameObject:
   - component: {fileID: 2060270528}
   - component: {fileID: 2060270527}
   - component: {fileID: 2060270529}
+  - component: {fileID: 2060270530}
   m_Layer: 0
   m_Name: GenerateGrid(Dirt)
   m_TagString: Untagged
@@ -286,9 +304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rows: 64
-  cols: 32
+  cols: 64
   tileSize: 1
   tileType: {fileID: 6614932174187711148, guid: c45dfb23b9bd7da428a306a32140fa08, type: 3}
+  hasStartingArea: 1
 --- !u!4 &2060270528
 Transform:
   m_ObjectHideFlags: 0
@@ -316,3 +335,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8aa033470b0bf4bb97b258dc7c8f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2060270530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060270526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75ddcf183de13141b207ec3a589aab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hightlightColor: {r: 0.9843137, g: 0.38431373, b: 0.38431373, a: 1}
+  renderer: {fileID: 0}
+  highlightable: 0

@@ -15,8 +15,6 @@ public class GridManager : MonoBehaviour
     private GameObject tileType;
 	[SerializeField]
 	private bool hasStartingArea = false;
-	[SerializeField]
-	private bool highlightable = true;
 
 
 	void Start()
@@ -57,16 +55,4 @@ public class GridManager : MonoBehaviour
 		for (int y = 30; y != 33; y++)
 			Destroy(GameObject.Find($"Dirt_33_-{y}"));
 	}
-
-    //private Color startcolor;
-    void OnMouseEnter()
-    {
-        if(highlightable)
-            GetComponent<Renderer>().material.color = Color.yellow;
-    }
-    void OnMouseExit()
-    {
-        if(highlightable) 
-            GetComponent<Renderer>().material.color = new Color(1,1,1,1);
-    }
 }

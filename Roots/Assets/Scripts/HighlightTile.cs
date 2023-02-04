@@ -8,13 +8,13 @@ public class HighlightTile : MonoBehaviour
     [SerializeField] private Color hightlightColor = new Color(0.5f, 0,0,1);
     [SerializeField] private SpriteRenderer renderer;
 
-    private void OnMouseEnter()
+	private void OnMouseEnter()
     {
-        renderer.color = hightlightColor;
+		renderer.color = hightlightColor;
     }
 
     private void OnMouseExit()
     {
-        renderer.color = new Color(1, 1, 1, 1);
+		renderer.color = new Color(1, 1, 1, 1);
     }
 }
