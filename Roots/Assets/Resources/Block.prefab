@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: -8743357040074047965}
   - component: {fileID: -2062867211764296975}
   - component: {fileID: -7096098666156725135}
-  m_Layer: 0
+  - component: {fileID: 4071800691508637534}
+  m_Layer: 6
   m_Name: Block
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestructable: 0
   miningWood: 0
-  probabilityOfFood: 3
+  probabilityOfFood: 100
   isFoggy: 1
   type: 0
   BackgroundSprite: {fileID: 21300000, guid: b3cb9e68ad6c63c4dabe56bfc5d5a9db, type: 3}
@@ -131,9 +132,9 @@ MonoBehaviour:
   RootEndUpSprite: {fileID: 21300000, guid: 548cfa8d1d037fa45930715627b9b8e3, type: 3}
   RootEndDownSprite: {fileID: 21300000, guid: 773661dcbba294443b72dfae14751c42, type: 3}
   FogSprite: {fileID: 21300000, guid: 382c7a67da912be4c9e4f7caf8437075, type: 3}
-  LeafSprite: {fileID: 0}
-  BerrySprite: {fileID: 0}
-  LarvaeSprite: {fileID: 0}
+  LeafSprite: {fileID: 21300000, guid: 1fccbba95ef1afe409fe5d4cce6732eb, type: 3}
+  BerrySprite: {fileID: 21300000, guid: 1cded7678c794b24285ff24ce45b2eae, type: 3}
+  LarvaeSprite: {fileID: 21300000, guid: 9b005ca68f485164cbe84990f7cd9e71, type: 3}
 --- !u!114 &-2062867211764296975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +162,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17bb0e9dc43715e42831fee27471aaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &4071800691508637534
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288292142978117314}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
