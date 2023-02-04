@@ -17,7 +17,7 @@ public class SelectAnt : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
 
@@ -36,9 +36,9 @@ public class SelectAnt : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg - 90);
         }
         lastPos = transform.position;
-    }
+	}
 
-    private void OnDestroy()
+	private void OnDestroy()
     {
         SelecTile.selectedTile -= OnTileSelected;
     }
