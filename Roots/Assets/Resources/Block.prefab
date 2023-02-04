@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hightlightColor: {r: 0.5, g: 0, b: 0, a: 1}
-  renderer: {fileID: 3995680235386264339}
+  block: {fileID: -8743357040074047965}
 --- !u!114 &-7096098666156725135
 MonoBehaviour:
   m_ObjectHideFlags: 0
