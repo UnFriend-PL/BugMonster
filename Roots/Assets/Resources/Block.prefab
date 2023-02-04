@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4071800691508637534}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526e0861fa8138d4c9b57a6d4e64ea3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestructable: 0
   miningWood: 0
+  probabilityOfFood: 3
   isFoggy: 1
   type: 0
   BackgroundSprite: {fileID: 21300000, guid: b3cb9e68ad6c63c4dabe56bfc5d5a9db, type: 3}
@@ -130,6 +132,9 @@ MonoBehaviour:
   RootEndUpSprite: {fileID: 21300000, guid: 548cfa8d1d037fa45930715627b9b8e3, type: 3}
   RootEndDownSprite: {fileID: 21300000, guid: 773661dcbba294443b72dfae14751c42, type: 3}
   FogSprite: {fileID: 21300000, guid: 382c7a67da912be4c9e4f7caf8437075, type: 3}
+  LeafSprite: {fileID: 0}
+  BerrySprite: {fileID: 0}
+  LarvaeSprite: {fileID: 0}
 --- !u!114 &-2062867211764296975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +150,6 @@ MonoBehaviour:
   hightlightColor: {r: 0.5, g: 0, b: 0, a: 1}
   renderer: {fileID: 3995680235386264339}
   orginalColor: {r: 255, g: 255, b: 255, a: 1}
-  x: {fileID: 21300000, guid: 382c7a67da912be4c9e4f7caf8437075, type: 3}
 --- !u!114 &-7096098666156725135
 MonoBehaviour:
   m_ObjectHideFlags: 0
