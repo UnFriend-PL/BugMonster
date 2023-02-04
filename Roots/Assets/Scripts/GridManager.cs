@@ -13,12 +13,16 @@ public class GridManager : MonoBehaviour
     private float tileSize = 1;
     [SerializeField]
     private GameObject tileType;
+	[SerializeField]
+	private bool hasStartingArea = false;
+	[SerializeField]
+	private bool highlightable = true;
 
 
-    // Start is called before the first frame update
-    void Start()
+	void Start()
     {
         GenerateGrid();
+        if(hasStartingArea) GenerateStartingArea();
     }
 
     private void GenerateGrid()
@@ -42,19 +46,27 @@ public class GridManager : MonoBehaviour
         transform.position = new Vector2(-gridW/2 + tileSize /2, gridH/2 - tileSize /2);
 
     }
-    private Color startcolor;
+
+    private void GenerateStartingArea()
+    {
+		for (int x = 30; x != 33; x++)
+			for (int y = 29; y != 34; y++)
+				Destroy(GameObject.Find($"Dirt_{x}_-{y}"));
+		for (int y = 30; y != 33; y++)
+			Destroy(GameObject.Find($"Dirt_29_-{y}"));
+		for (int y = 30; y != 33; y++)
+			Destroy(GameObject.Find($"Dirt_33_-{y}"));
+	}
+
+    //private Color startcolor;
     void OnMouseEnter()
     {
-        startcolor = GetComponent<Renderer>().material.color;
-        GetComponent<Renderer>().material.color = Color.yellow;
+        if(highlightable)
+            GetComponent<Renderer>().material.color = Color.yellow;
     }
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = startcolor;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(highlightable) 
+            GetComponent<Renderer>().material.color = new Color(1,1,1,1);
     }
 }
