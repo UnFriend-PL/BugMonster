@@ -9,9 +9,9 @@ public class SelectAnt : MonoBehaviour
 
     // Update is called once per frame
     private int counter = 0;
-    Vector2 firstPos, secondPos;
+    Vector3 firstPos, secondPos;
     public float speed = 0.5f;
-    private Vector2 direction;
+    private Vector3 direction;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class SelectAnt : MonoBehaviour
     private void Update()
     {
         //StartCoroutine(MoveToPosition(secondPos));
-        transform.position = Vector2.Lerp(transform.position, secondPos, speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, secondPos, speed * Time.deltaTime);
 
     }
 
@@ -30,7 +30,7 @@ public class SelectAnt : MonoBehaviour
     {
         SelecTile.selectedTile -= OnTileSelected;
     }
-    private void OnTileSelected(Vector2 obj)
+    private void OnTileSelected(Vector3 obj)
     {
         if (obj == firstPos)
         {
@@ -41,11 +41,11 @@ public class SelectAnt : MonoBehaviour
         secondPos = obj;
     }
 
-    IEnumerator MoveToPosition(Vector2 targetPos)
+    IEnumerator MoveToPosition(Vector3 targetPos)
     {
-        while (Vector2.Distance(transform.position, targetPos) > 0.1f)
+        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             yield return null;
         }
     }
@@ -55,7 +55,7 @@ public class SelectAnt : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Vector2 position = transform.position;
+            Vector3 position = transform.position;
             firstPos = position;
             Debug.Log($"{position} - ant");
             //if (counter == 0)

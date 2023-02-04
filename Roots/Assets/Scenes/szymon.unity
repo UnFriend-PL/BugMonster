@@ -132,16 +132,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: cols
-      value: 128
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: rows
-      value: 64
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: tileType
       value: 
       objectReference: {fileID: 6614932174187711148, guid: c45dfb23b9bd7da428a306a32140fa08, type: 3}
+    - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
+      propertyPath: hasStartingArea
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640089, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -156,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640089, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640089, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: m_LocalRotation.w
@@ -655,6 +659,7 @@ GameObject:
   - component: {fileID: 1772657077}
   - component: {fileID: 1772657076}
   - component: {fileID: 1772657075}
+  - component: {fileID: 1772657078}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -728,6 +733,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1772657078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772657074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7e32cc87789eb4398731a0223741d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+--- !u!1 &1968387898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4149010607315640091, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
+  m_PrefabInstance: {fileID: 4149010608423268390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1968387901
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968387898}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1982215865
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,15 +866,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3000416973516906641, guid: c02f552cf3d5ea040a2f16b10b40142a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3000416973516906641, guid: c02f552cf3d5ea040a2f16b10b40142a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3000416973516906641, guid: c02f552cf3d5ea040a2f16b10b40142a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3000416973516906641, guid: c02f552cf3d5ea040a2f16b10b40142a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -870,11 +919,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: cols
-      value: 128
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: rows
-      value: 64
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640088, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: tileType
@@ -894,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640089, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4149010607315640089, guid: fd0e9d1da63160641b8410a6cc428756, type: 3}
       propertyPath: m_LocalRotation.w
