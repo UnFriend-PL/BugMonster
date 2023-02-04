@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6391182709976142087}
   - component: {fileID: 3378153264506184868}
   - component: {fileID: 6127062042165205826}
-  - component: {fileID: 2163832770942012805}
+  - component: {fileID: -1089917374847611243}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hightlightColor: {r: 1, g: 0.63645667, b: 0.61698115, a: 1}
   renderer: {fileID: 3378153264506184868}
---- !u!114 &2163832770942012805
+--- !u!114 &-1089917374847611243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
