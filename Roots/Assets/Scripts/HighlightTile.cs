@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class HighlightTile : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private Color hightlightColor = new Color(0.5f, 0,0,1);
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private Block block;
 
 	private void OnMouseEnter()
     {
-		renderer.color = hightlightColor;
+		block.gameObject.GetComponent<SpriteRenderer>().color = hightlightColor;
+        Debug.Log("enter");
     }
 
     private void OnMouseExit()
     {
-		renderer.color = new Color(1, 1, 1, 1);
+        block.gameObject.GetComponent<SpriteRenderer>().color = new Color(128, 128, 128, 1);
     }
 }
