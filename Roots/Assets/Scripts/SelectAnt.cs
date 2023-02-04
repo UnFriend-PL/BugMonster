@@ -5,25 +5,23 @@ using UnityEngine;
 
 public class SelectAnt : MonoBehaviour
 {
-    public int HP;
+    //public int HP;
+    bool isSelected = false;
 
-    // Update is called once per frame
-    private int counter = 0;
     Vector3 firstPos, secondPos;
     public float speed = 0.5f;
-    private Vector3 direction;
+	[SerializeField] private SpriteRenderer renderer;
+	[SerializeField] private Color hightlightColor = new Color(0.5f, 0, 0, 1);
 
-    void Start()
+	void Start()
     {
         SelecTile.selectedTile += OnTileSelected;
-
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //StartCoroutine(MoveToPosition(secondPos));
-        transform.position = Vector3.Lerp(transform.position, secondPos, speed * Time.deltaTime);
-
+			var body = GetComponent<Rigidbody2D>();
+			body.MovePosition(Vector2.Lerp(body.position, secondPos, speed * Time.fixedDeltaTime));
     }
 
     private void OnDestroy()
@@ -32,47 +30,34 @@ public class SelectAnt : MonoBehaviour
     }
     private void OnTileSelected(Vector3 obj)
     {
-        if (obj == firstPos)
+        if(isSelected)
         {
-            return;
-        }
-        Debug.Log($"{obj} - tile");
+			Debug.Log($"{obj} - tile");
+			secondPos = obj;
 
-        secondPos = obj;
+			Vector3 direction = new Vector3(
+				secondPos.x - transform.position.x,
+				secondPos.y - transform.position.y,
+				secondPos.z - transform.position.z);
+			transform.up = direction;
+
+            isSelected = false;
+			renderer.color = new Color(1, 1, 1, 1);
+		}
     }
 
-    IEnumerator MoveToPosition(Vector3 targetPos)
+    private void OnMouseDown()
     {
-        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            yield return null;
-        }
-    }
+        isSelected = true;
+		renderer.color = hightlightColor;
+	}
 
-
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(1))
+	/*private void Update()
+	{
+        if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 position = transform.position;
-            firstPos = position;
-            Debug.Log($"{position} - ant");
-            //if (counter == 0)
-            //{
-            //    firstPos = position;
-            //    counter += 1;
-            //    Debug.Log(position);
-            //}
-            //if (counter == 1)
-            //{
-            //    secondPos = position;
-            //    counter = 0;
-            //}
-            //if (counter > 0 && Input.GetMouseButtonDown(0))
-            //{
-            //    counter = 0;
-            //}
-        }
-    }
+            isSelected = false;
+			renderer.color = new Color(1, 1, 1, 1);
+		}
+	}*/
 }

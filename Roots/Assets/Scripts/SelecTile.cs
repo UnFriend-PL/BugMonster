@@ -11,7 +11,7 @@ public class SelecTile : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPos.z = 1;
+            targetPos.z = -1;
             selectedTile?.Invoke(targetPos);
         }
     }
