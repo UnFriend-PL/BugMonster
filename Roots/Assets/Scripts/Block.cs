@@ -92,6 +92,15 @@ public class Block : MonoBehaviour
 		if(isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
 	}
 
+	public void Mine()
+	{
+		if(isDestructable)
+		{
+			type = blockType.Background;
+			ChangeType();
+		}
+	}
+
     public enum blockType
     {
         Background,

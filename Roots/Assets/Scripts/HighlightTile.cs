@@ -5,16 +5,16 @@ using UnityEngine;
 public class HighlightTile : MonoBehaviour
 {
     [SerializeField] private Color hightlightColor = new Color(0.5f, 0,0,1);
-    [SerializeField] private Block block;
+    [SerializeField] private SpriteRenderer renderer;
 
 	private void OnMouseEnter()
     {
-		block.gameObject.GetComponent<SpriteRenderer>().color = hightlightColor;
+		renderer.gameObject.GetComponent<SpriteRenderer>().color = hightlightColor;
         Debug.Log("enter");
     }
 
     private void OnMouseExit()
     {
-        block.gameObject.GetComponent<SpriteRenderer>().color = new Color(128, 128, 128, 1);
+        renderer.gameObject.GetComponent<SpriteRenderer>().color = new Color(128, 128, 128, 1);
     }
 }
