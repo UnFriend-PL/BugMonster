@@ -48,6 +48,7 @@ public class GridManager : MonoBehaviour
         startcolor = GetComponent<Renderer>().material.color;
         GetComponent<Renderer>().material.color = Color.yellow;
     }
+
     void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = startcolor;
