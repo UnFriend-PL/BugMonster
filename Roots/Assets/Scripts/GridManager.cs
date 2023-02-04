@@ -6,9 +6,9 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField]
-    private int rows = 10;
+    private int rows = 32;
     [SerializeField]
-    private int cols = 16;
+    private int cols = 32;
     [SerializeField]
     private float tileSize = 1;
     [SerializeField]
@@ -47,12 +47,13 @@ public class GridManager : MonoBehaviour
 
     private void GenerateStartingArea()
     {
-		for (int x = 30; x != 33; x++)
-			for (int y = 29; y != 34; y++)
-				Destroy(GameObject.Find($"{tileType.name}_{x}_-{y}"));
-		for (int y = 30; y != 33; y++)
-			Destroy(GameObject.Find($"{tileType.name}_29_-{y}"));
-		for (int y = 30; y != 33; y++)
-			Destroy(GameObject.Find($"{tileType.name}_33_-{y}"));
+		//for (int x = 30; x != 33; x++)
+        for (int x = (rows / 2) - 2; x != (rows / 2) + 1; x++)
+			for (int y = (cols / 2) - 3; y != (cols / 2) + 2; y++)
+				Destroy(GameObject.Find($"{tileType.name}_{y}_-{x}"));
+		for (int y = (cols / 2) - 2; y != (cols / 2) + 1; y++)
+			Destroy(GameObject.Find($"{tileType.name}_{y}_-{(rows / 2) - 3}"));
+		for (int y = (cols / 2) - 2; y != (cols / 2) + 1; y++)
+			Destroy(GameObject.Find($"{tileType.name}_{y}_-{(rows / 2) + 1}"));
 	}
 }
