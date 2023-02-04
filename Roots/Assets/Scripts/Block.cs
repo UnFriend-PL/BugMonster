@@ -5,10 +5,10 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     private bool isWalkable = true;
-	private bool isDestructable = true;
+	public bool isDestructable = true;
     public bool miningWood = false;
 	[SerializeField] public bool isFoggy = true;
-	[SerializeField] blockType type;
+	[SerializeField] public blockType type;
     [SerializeField] Sprite BackgroundSprite;
     [SerializeField] Sprite DirtSprite;
 	[SerializeField] Sprite StoneSprite;
@@ -30,7 +30,7 @@ public class Block : MonoBehaviour
         ChangeType();
     }
 
-    private void ChangeType()
+    public void ChangeType()
     {
         switch (type)
         {
