@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e0fc4ec997d03418cdd60c90fd21d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 44
-  cols: 66
+  rows: 64
+  cols: 32
   tileSize: 1
   tileType: {fileID: 6614932174187711148, guid: af9a2e630cd598e41921f4f746d67608, type: 3}
   hasStartingArea: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e0fc4ec997d03418cdd60c90fd21d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 44
-  cols: 66
+  rows: 64
+  cols: 32
   tileSize: 1
   tileType: {fileID: 6614932174187711148, guid: c45dfb23b9bd7da428a306a32140fa08, type: 3}
   hasStartingArea: 1
