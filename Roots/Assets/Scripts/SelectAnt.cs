@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SelectAnt : MonoBehaviour
 {
@@ -12,8 +13,16 @@ public class SelectAnt : MonoBehaviour
     public float speed = 0.5f;
 	[SerializeField] private SpriteRenderer renderer;
 	[SerializeField] private Color hightlightColor = new Color(0.5f, 0, 0, 1);
+    [SerializeField] NavMeshAgent agent;
+    void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+    }
 
-	void Start()
+
+    void Start()
     {
         SelecTile.selectedTile += OnTileSelected;
     }
@@ -52,12 +61,13 @@ public class SelectAnt : MonoBehaviour
 		renderer.color = hightlightColor;
 	}
 
-	/*private void Update()
-	{
-        if (Input.GetButtonDown("Fire1"))
-        {
-            isSelected = false;
-			renderer.color = new Color(1, 1, 1, 1);
-		}
-	}*/
+    private void Update()
+    {
+        SetAgentPosition();
+    }
+
+    void SetAgentPosition()
+    {
+        agent.SetDestination(new Vector3(secondPos.x, secondPos.y, transform.position.z));
+    }
 }
