@@ -16,6 +16,12 @@ public class PickResource : MonoBehaviour
             Destroy(collision.gameObject);
             value.GetComponent<ScoreManager>().Start();
         }
-        Debug.Log(value.GetComponent<ScoreManager>().countOfDirt + " pkt");
+    }
+
+    private enum foodType {
+        leaf,
+        blueberry,
+        larva,
+        food
     }
 }

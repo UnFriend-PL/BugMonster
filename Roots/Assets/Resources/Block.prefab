@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b3cb9e68ad6c63c4dabe56bfc5d5a9db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 382c7a67da912be4c9e4f7caf8437075, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miningWood: 0
+  isFoggy: 1
   type: 0
   BackgroundSprite: {fileID: 21300000, guid: b3cb9e68ad6c63c4dabe56bfc5d5a9db, type: 3}
   DirtSprite: {fileID: 21300000, guid: 6c0a56b9ad5473f4f9e5b756cb2ead54, type: 3}
@@ -128,6 +129,7 @@ MonoBehaviour:
   RootEndRightSprite: {fileID: 21300000, guid: 2eb609b906226344091651bbfee31a5d, type: 3}
   RootEndUpSprite: {fileID: 21300000, guid: 548cfa8d1d037fa45930715627b9b8e3, type: 3}
   RootEndDownSprite: {fileID: 21300000, guid: 773661dcbba294443b72dfae14751c42, type: 3}
+  FogSprite: {fileID: 21300000, guid: 382c7a67da912be4c9e4f7caf8437075, type: 3}
 --- !u!114 &-2062867211764296975
 MonoBehaviour:
   m_ObjectHideFlags: 0
