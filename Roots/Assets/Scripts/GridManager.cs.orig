@@ -47,6 +47,21 @@ public class GridManager : MonoBehaviour
 
     private void GenerateStartingArea()
     {
+<<<<<<< HEAD
+        startcolor = GetComponent<Renderer>().material.color;
+        GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = startcolor;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+=======
 		//for (int x = 30; x != 33; x++)
         for (int x = (rows / 2) - 2; x != (rows / 2) + 1; x++)
 			for (int y = (cols / 2) - 3; y != (cols / 2) + 2; y++)
@@ -56,4 +71,5 @@ public class GridManager : MonoBehaviour
 		for (int y = (cols / 2) - 2; y != (cols / 2) + 1; y++)
 			Destroy(GameObject.Find($"{tileType.name}_{y}_-{(rows / 2) + 1}"));
 	}
+>>>>>>> 0d02385b07146228b0b56c8c84b0c5c80a39aef1
 }
