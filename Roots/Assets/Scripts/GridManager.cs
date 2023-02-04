@@ -49,10 +49,10 @@ public class GridManager : MonoBehaviour
     {
 		for (int x = 30; x != 33; x++)
 			for (int y = 29; y != 34; y++)
-				Destroy(GameObject.Find($"Dirt_{x}_-{y}"));
+				Destroy(GameObject.Find($"{tileType.name}_{x}_-{y}"));
 		for (int y = 30; y != 33; y++)
-			Destroy(GameObject.Find($"Dirt_29_-{y}"));
+			Destroy(GameObject.Find($"{tileType.name}_29_-{y}"));
 		for (int y = 30; y != 33; y++)
-			Destroy(GameObject.Find($"Dirt_33_-{y}"));
+			Destroy(GameObject.Find($"{tileType.name}_33_-{y}"));
 	}
 }
