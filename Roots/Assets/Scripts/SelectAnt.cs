@@ -7,11 +7,8 @@ public class SelectAnt : MonoBehaviour
 {
     public int HP;
 
-    // Update is called once per frame
-    private int counter = 0;
     Vector3 firstPos, secondPos;
     public float speed = 0.5f;
-    private Vector3 direction;
 
     void Start()
     {
@@ -19,10 +16,11 @@ public class SelectAnt : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //StartCoroutine(MoveToPosition(secondPos));
-        transform.position = Vector3.Lerp(transform.position, secondPos, speed * Time.deltaTime);
+        var body = GetComponent<Rigidbody2D>();
+        body.MovePosition(Vector2.Lerp(body.position,secondPos,speed*Time.fixedDeltaTime));
+
 
     }
 
@@ -37,19 +35,14 @@ public class SelectAnt : MonoBehaviour
             return;
         }
         Debug.Log($"{obj} - tile");
-
         secondPos = obj;
-    }
 
-    IEnumerator MoveToPosition(Vector3 targetPos)
-    {
-        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            yield return null;
-        }
+        Vector3 direction = new Vector3(
+            secondPos.x - transform.position.x,
+            secondPos.y - transform.position.y,
+            secondPos.z - transform.position.z);
+        transform.up = direction;
     }
-
 
     private void OnMouseOver()
     {
@@ -58,21 +51,6 @@ public class SelectAnt : MonoBehaviour
             Vector3 position = transform.position;
             firstPos = position;
             Debug.Log($"{position} - ant");
-            //if (counter == 0)
-            //{
-            //    firstPos = position;
-            //    counter += 1;
-            //    Debug.Log(position);
-            //}
-            //if (counter == 1)
-            //{
-            //    secondPos = position;
-            //    counter = 0;
-            //}
-            //if (counter > 0 && Input.GetMouseButtonDown(0))
-            //{
-            //    counter = 0;
-            //}
         }
     }
 }
