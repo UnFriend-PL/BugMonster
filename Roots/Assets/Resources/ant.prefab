@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 805483214322567709}
   - component: {fileID: 2457269352002530585}
   - component: {fileID: -594775597075763655}
-  - component: {fileID: 7992177877635542484}
-  - component: {fileID: 3088909555101441882}
+  - component: {fileID: -7736909519070799002}
+  - component: {fileID: 1823907433713202389}
   m_Layer: 0
   m_Name: ant
   m_TagString: Ant
@@ -149,25 +149,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  renderer: {fileID: 0}
-  hightlightColor: {r: 0.5, g: 0, b: 0, a: 1}
---- !u!58 &7992177877635542484
-CircleCollider2D:
+--- !u!195 &-7736909519070799002
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3000416973516906643}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
+  m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 2.56
---- !u!114 &3088909555101441882
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5.12
+  m_BaseOffset: 2.56
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1823907433713202389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3000416973516906643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10b7b0f80a659b4dad6d3ff3e0bd6c0, type: 3}
+  m_Script: {fileID: 11500000, guid: f7288722b1166834cbd9a25ac0a02655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chosenTag: Ant
+  agent: {fileID: -7736909519070799002}
