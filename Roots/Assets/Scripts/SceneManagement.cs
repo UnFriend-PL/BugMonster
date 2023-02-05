@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
     public void Play() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
