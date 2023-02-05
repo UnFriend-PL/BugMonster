@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -26,10 +28,13 @@ public class Block : MonoBehaviour
 	[SerializeField] Sprite LeafSprite;
 	[SerializeField] Sprite BerrySprite;
 	[SerializeField] Sprite LarvaeSprite;
+	[SerializeField] SpriteRenderer renderer;
+	[SerializeField] Color HighlightColor = Color.magenta;
 
 	private void Start()
 	{
 		ChangeType();
+		//unFogOpenSpaces();
 	}
 	private void OnValidate()
 	{
@@ -37,37 +42,20 @@ public class Block : MonoBehaviour
 		ChangeType();
 	}
 
-	/*private void OnMouseDown()
-	{
-		isClicked = true;
-		firstclick = true;
-		Debug.Log("on");
-	}
-
-	private void Update()
-	{
-		if (Input.GetMouseButtonDown(1))
-		{
-			if (firstclick) firstclick = false;
-			else if (isClicked)	isClicked = false;
-			else
-			{
-				isClicked = true;
-				firstclick = true;
-			}
-		}
-	}*/
-
 	private async void OnMouseOver()
 	{
+		renderer.color = HighlightColor;
 		if (Input.GetMouseButtonDown(1))
 		{
-			Debug.Log("AAA");
 			isClicked = true;
 			await Task.Delay(time * 1000);
-			isClicked= false;
-			Debug.Log("AAABBB");
+			isClicked = false;
 		}
+	}
+
+	private void OnMouseExit()
+	{
+		renderer.color = Color.white;
 	}
 
 
@@ -175,37 +163,66 @@ public class Block : MonoBehaviour
 		if (isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
 	}
 
-	public void Mine()
+	public bool Mine()
 	{
-		if(isClicked)
+		bool isDirt = false;
+		if (isClicked && isDestructable)
 		{
-			Debug.Log("mine!");
-			if (isDestructable)
+			System.Random rand = new System.Random();
+			if (rand.Next(1, 101) <= probabilityOfFood)
 			{
-				Debug.Log("mine That!");
-				System.Random rand = new System.Random();
-				if (rand.Next(1, 101) <= probabilityOfFood)
+				switch (rand.Next(0, 3))
 				{
-					switch (rand.Next(0, 3))
-					{
-						case 0:
-							type = blockType.Leaf;
-							break;
-						case 1:
-							type = blockType.Berry;
-							break;
-						case 2:
-							type = blockType.Larvae;
-							break;
-					}
+					case 0:
+						isClicked = false;
+						type = blockType.Leaf;
+						break;
+					case 1:
+						isClicked = false;
+						type = blockType.Berry;
+						break;
+					case 2:
+						isClicked = false;
+						type = blockType.Larvae;
+						break;
 				}
-				else
-				{
-					type = blockType.Background;
-				}
+			}
+			else
+			{
+				isDirt = true;
+				type = blockType.Background;
+			}
+			ChangeType();
+			removeFogAround();
+		}
+		isClicked = false;
+		return isDirt;
+	}
+
+	public int Eat()
+	{
+		if (isClicked)
+		{
+			if (type == blockType.Leaf)
+			{
+				type = blockType.Background;
 				ChangeType();
+				return 1;
+			}
+			else if (type == blockType.Berry)
+			{
+				type = blockType.Background;
+				ChangeType();
+				return 3;
+			}
+			else if (type == blockType.Larvae)
+			{
+				type = blockType.Background;
+				ChangeType();
+				return 5;
 			}
 		}
+		return 0;
 	}
 
 	public enum blockType
@@ -223,4 +240,60 @@ public class Block : MonoBehaviour
 		Berry,
 		Larvae
 	}
+
+	public int Collumn()
+	{
+		string x = transform.parent.name;
+		x = Regex.Match(x, @"\d+").Value;
+		return int.Parse(x);
+	}
+	public int Row()
+	{
+		string x = transform.name;
+		x = Regex.Match(x, @"\d+").Value;
+		return int.Parse(x);
+	}
+	public string makeCollumn(int x)
+	{
+		return "Blocks (" + x + ")";
+	}
+	public string makeRow(int x)
+	{
+		return "Block (" + x + ")";
+	}
+
+	public void removeFogAround()
+	{
+		int x = Collumn(), y = Row();
+		for (int i = x - 1; i != x + 2; i++)
+		{
+			for (int j = y - 1; j != y + 2; j++)
+			{
+				GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().unFog();
+			}
+		}
+	}
+
+	public void unFog()
+	{
+		isFoggy = false;
+		ChangeType();
+	}
+
+	/*public void unFogOpenSpaces()
+	{
+		for (int i = 0; i != 64; i++)
+		{
+			for (int j = 0; j != 64; j++)
+			{
+				if (GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Background ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Leaf ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Berry ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Larvae )
+				{
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().removeFogAround();
+				}
+			}
+		}
+	}*/
 }
