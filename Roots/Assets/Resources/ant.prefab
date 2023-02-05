@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2457269352002530585}
   - component: {fileID: -594775597075763655}
   - component: {fileID: -7736909519070799002}
-  - component: {fileID: 1823907433713202389}
   - component: {fileID: -7362575181507237424}
   m_Layer: 0
   m_Name: ant
@@ -175,19 +174,6 @@ NavMeshAgent:
   m_BaseOffset: 2.56
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1823907433713202389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000416973516906643}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7288722b1166834cbd9a25ac0a02655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: -7736909519070799002}
 --- !u!114 &-7362575181507237424
 MonoBehaviour:
   m_ObjectHideFlags: 0

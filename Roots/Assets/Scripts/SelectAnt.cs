@@ -20,7 +20,6 @@ public class SelectAnt : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
-
     void Start()
     {
         SelecTile.selectedTile += OnTileSelected;

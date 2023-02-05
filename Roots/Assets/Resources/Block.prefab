@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3995680235386264339}
   - component: {fileID: 2486160654640294661}
   - component: {fileID: -8743357040074047965}
-  - component: {fileID: -2062867211764296975}
   - component: {fileID: -7096098666156725135}
   - component: {fileID: 4071800691508637534}
+  - component: {fileID: -6956507142233572847}
   m_Layer: 6
   m_Name: Block
   m_TagString: Block
@@ -120,6 +120,7 @@ MonoBehaviour:
   isDestructable: 0
   miningWood: 0
   probabilityOfFood: 3
+  time: 3
   isFoggy: 1
   type: 0
   BackgroundSprite: {fileID: 21300000, guid: b3cb9e68ad6c63c4dabe56bfc5d5a9db, type: 3}
@@ -135,21 +136,6 @@ MonoBehaviour:
   LeafSprite: {fileID: 21300000, guid: 1fccbba95ef1afe409fe5d4cce6732eb, type: 3}
   BerrySprite: {fileID: 21300000, guid: 1cded7678c794b24285ff24ce45b2eae, type: 3}
   LarvaeSprite: {fileID: 21300000, guid: 9b005ca68f485164cbe84990f7cd9e71, type: 3}
---- !u!114 &-2062867211764296975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2288292142978117314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75ddcf183de13141b207ec3a589aab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hightlightColor: {r: 0.5, g: 0, b: 0, a: 1}
-  renderer: {fileID: 3995680235386264339}
-  orginalColor: {r: 255, g: 255, b: 255, a: 1}
 --- !u!114 &-7096098666156725135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +174,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &-6956507142233572847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288292142978117314}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
