@@ -208,6 +208,14 @@ public class Block : MonoBehaviour
 		}
 	}
 
+	public int Eat()
+	{
+		if (type == blockType.Leaf) return 1;
+		else if (type == blockType.Berry) return 3;
+		else if (type == blockType.Larvae) return 5;
+		else return 0;
+	}
+
 	public enum blockType
 	{
 		Background,
