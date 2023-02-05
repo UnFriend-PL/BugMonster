@@ -210,28 +210,31 @@ public class Block : MonoBehaviour
 
 	public int Eat()
 	{
-		if (type == blockType.Leaf)
+		if(isClicked)
 		{
-			type = blockType.Background;
-			ChangeType();
-			isClicked = false;
-			return 1;
+			if (type == blockType.Leaf)
+			{
+				type = blockType.Background;
+				ChangeType();
+				isClicked = false;
+				return 1;
+			}
+			else if (type == blockType.Berry)
+			{
+				type = blockType.Background;
+				ChangeType();
+				isClicked = false;
+				return 3;
+			}
+			else if (type == blockType.Larvae)
+			{
+				type = blockType.Background;
+				ChangeType();
+				isClicked = false;
+				return 5;
+			}
 		}
-		else if (type == blockType.Berry)
-		{
-			type = blockType.Background;
-			ChangeType();
-			isClicked = false;
-			return 3;
-		}
-		else if (type == blockType.Larvae)
-		{
-			type = blockType.Background;
-			ChangeType();
-			isClicked = false;
-			return 5;
-		}
-		else return 0;
+		return 0;
 	}
 
 	public enum blockType
