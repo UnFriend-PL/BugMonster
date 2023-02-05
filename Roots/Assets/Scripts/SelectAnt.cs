@@ -26,16 +26,16 @@ public class SelectAnt : MonoBehaviour
     }
 
     Vector2 lastPos;
-    private void FixedUpdate()
+    private void Update()
     {
         SetAgentPosition();
-        var deltaPos = (Vector2)transform.position-lastPos;
+        var deltaPos = (Vector2)transform.position - lastPos;
         if (deltaPos.magnitude > 0.001f)
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg - 90);
         }
         lastPos = transform.position;
-	}
+    }
 
 	private void OnDestroy()
     {
@@ -47,14 +47,6 @@ public class SelectAnt : MonoBehaviour
         {
 			Debug.Log($"{obj} - tile");
 			secondPos = obj;
-
-			Vector3 direction = new Vector3(
-				secondPos.x - transform.position.x,
-				secondPos.y - transform.position.y,
-				secondPos.z - transform.position.z);
-            direction.z = -1;
-			transform.up = direction;
-
             isSelected = false;
 			renderer.color = new Color(1, 1, 1, 1);
 		}
