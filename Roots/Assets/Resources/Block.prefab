@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestructable: 0
   miningWood: 0
-  probabilityOfFood: 3
+  probabilityOfFood: 90
   time: 3
   isFoggy: 1
   type: 0
