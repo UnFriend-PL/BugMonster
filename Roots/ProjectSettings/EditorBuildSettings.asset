@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Adam.unity
+    guid: 8166f71846f219c45ae2848d039c3932
   m_configObjects: {}
