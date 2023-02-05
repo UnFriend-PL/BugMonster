@@ -62,11 +62,9 @@ public class Block : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			Debug.Log("AAA");
 			isClicked = true;
 			await Task.Delay(time * 1000);
 			isClicked= false;
-			Debug.Log("AAABBB");
 		}
 	}
 
@@ -175,9 +173,10 @@ public class Block : MonoBehaviour
 		if (isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
 	}
 
-	public void Mine()
+	public bool Mine()
 	{
-		if(isClicked)
+		bool isDirt = false;
+		if (isClicked)
 		{
 			Debug.Log("mine!");
 			if (isDestructable)
@@ -189,23 +188,55 @@ public class Block : MonoBehaviour
 					switch (rand.Next(0, 3))
 					{
 						case 0:
+							isClicked = false;
 							type = blockType.Leaf;
 							break;
 						case 1:
+							isClicked = false;
 							type = blockType.Berry;
 							break;
 						case 2:
+							isClicked = false;
 							type = blockType.Larvae;
 							break;
 					}
 				}
 				else
 				{
+					isDirt = true;
 					type = blockType.Background;
 				}
 				ChangeType();
 			}
 		}
+		isClicked = false;
+		return isDirt;
+	}
+
+	public int Eat()
+	{
+		if(isClicked)
+		{
+			if (type == blockType.Leaf)
+			{
+				type = blockType.Background;
+				ChangeType();
+				return 1;
+			}
+			else if (type == blockType.Berry)
+			{
+				type = blockType.Background;
+				ChangeType();
+				return 3;
+			}
+			else if (type == blockType.Larvae)
+			{
+				type = blockType.Background;
+				ChangeType();
+				return 5;
+			}
+		}
+		return 0;
 	}
 
 	public enum blockType
