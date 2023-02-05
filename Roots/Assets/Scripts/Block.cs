@@ -69,7 +69,6 @@ public class Block : MonoBehaviour
 				isWalkable = true;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
-				unFog();
 				break;
 			case blockType.Dirt:
 				gameObject.tag = "Block";
@@ -142,7 +141,6 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
-				unFog();
 				break;
 			case blockType.Berry:
 				gameObject.tag = "Food";
@@ -151,7 +149,6 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
-				unFog();
 				break;
 			case blockType.Larvae:
 				gameObject.tag = "Food";
@@ -160,7 +157,6 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
-				unFog();
 				break;
 		}
 		if (isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
