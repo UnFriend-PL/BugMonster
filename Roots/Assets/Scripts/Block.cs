@@ -214,18 +214,21 @@ public class Block : MonoBehaviour
 		{
 			type = blockType.Background;
 			ChangeType();
+			isClicked = false;
 			return 1;
 		}
 		else if (type == blockType.Berry)
 		{
 			type = blockType.Background;
 			ChangeType();
+			isClicked = false;
 			return 3;
 		}
 		else if (type == blockType.Larvae)
 		{
 			type = blockType.Background;
 			ChangeType();
+			isClicked = false;
 			return 5;
 		}
 		else return 0;
