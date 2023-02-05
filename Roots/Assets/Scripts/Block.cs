@@ -71,7 +71,7 @@ public class Block : MonoBehaviour
 		}
 	}
 
-	private async void OnMouseExit()
+	private void OnMouseExit()
 	{
 		renderer.color = Color.white;
 	}
@@ -186,10 +186,8 @@ public class Block : MonoBehaviour
 		bool isDirt = false;
 		if (isClicked)
 		{
-			Debug.Log("mine!");
 			if (isDestructable)
 			{
-				Debug.Log("mine That!");
 				System.Random rand = new System.Random();
 				if (rand.Next(1, 101) <= probabilityOfFood)
 				{
