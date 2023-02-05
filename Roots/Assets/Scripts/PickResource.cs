@@ -15,7 +15,6 @@ public class PickResource : MonoBehaviour
         if(collision.gameObject.tag == chosenTag)
         {
                 value.GetComponent<ScoreManager>().countOfDirt += collision.gameObject.GetComponent<Block>().Eat();
-                Destroy(collision.gameObject);
                 value.GetComponent<ScoreManager>().Start();
         }
     }
