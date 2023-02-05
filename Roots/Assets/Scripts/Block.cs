@@ -34,6 +34,7 @@ public class Block : MonoBehaviour
 	private void Start()
 	{
 		ChangeType();
+		//unFogOpenSpaces();
 	}
 	private void OnValidate()
 	{
@@ -278,4 +279,21 @@ public class Block : MonoBehaviour
 		isFoggy = false;
 		ChangeType();
 	}
+
+	/*public void unFogOpenSpaces()
+	{
+		for (int i = 0; i != 64; i++)
+		{
+			for (int j = 0; j != 64; j++)
+			{
+				if (GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Background ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Leaf ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Berry ||
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().type == blockType.Larvae )
+				{
+					GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().removeFogAround();
+				}
+			}
+		}
+	}*/
 }
