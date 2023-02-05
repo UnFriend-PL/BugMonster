@@ -175,9 +175,10 @@ public class Block : MonoBehaviour
 		if (isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
 	}
 
-	public void Mine()
+	public bool Mine()
 	{
-		if(isClicked)
+		bool isDirt = false;
+		if (isClicked)
 		{
 			Debug.Log("mine!");
 			if (isDestructable)
@@ -201,11 +202,14 @@ public class Block : MonoBehaviour
 				}
 				else
 				{
+					isDirt = true;
 					type = blockType.Background;
 				}
 				ChangeType();
 			}
 		}
+		isClicked = false;
+		return isDirt;
 	}
 
 	public int Eat()
