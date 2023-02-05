@@ -62,11 +62,9 @@ public class Block : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			Debug.Log("AAA");
 			isClicked = true;
 			await Task.Delay(time * 1000);
 			isClicked= false;
-			Debug.Log("AAABBB");
 		}
 	}
 
@@ -190,12 +188,15 @@ public class Block : MonoBehaviour
 					switch (rand.Next(0, 3))
 					{
 						case 0:
+							isClicked = false;
 							type = blockType.Leaf;
 							break;
 						case 1:
+							isClicked = false;
 							type = blockType.Berry;
 							break;
 						case 2:
+							isClicked = false;
 							type = blockType.Larvae;
 							break;
 					}
@@ -220,21 +221,18 @@ public class Block : MonoBehaviour
 			{
 				type = blockType.Background;
 				ChangeType();
-				isClicked = false;
 				return 1;
 			}
 			else if (type == blockType.Berry)
 			{
 				type = blockType.Background;
 				ChangeType();
-				isClicked = false;
 				return 3;
 			}
 			else if (type == blockType.Larvae)
 			{
 				type = blockType.Background;
 				ChangeType();
-				isClicked = false;
 				return 5;
 			}
 		}
