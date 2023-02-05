@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -39,27 +41,6 @@ public class Block : MonoBehaviour
 		ChangeType();
 	}
 
-	/*private void OnMouseDown()
-	{
-		isClicked = true;
-		firstclick = true;
-		Debug.Log("on");
-	}
-
-	private void Update()
-	{
-		if (Input.GetMouseButtonDown(1))
-		{
-			if (firstclick) firstclick = false;
-			else if (isClicked)	isClicked = false;
-			else
-			{
-				isClicked = true;
-				firstclick = true;
-			}
-		}
-	}*/
-
 	private async void OnMouseOver()
 	{
 		renderer.color = HighlightColor;
@@ -67,7 +48,7 @@ public class Block : MonoBehaviour
 		{
 			isClicked = true;
 			await Task.Delay(time * 1000);
-			isClicked= false;
+			isClicked = false;
 		}
 	}
 
@@ -88,6 +69,7 @@ public class Block : MonoBehaviour
 				isWalkable = true;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
+				unFog();
 				break;
 			case blockType.Dirt:
 				gameObject.tag = "Block";
@@ -160,6 +142,7 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
+				unFog();
 				break;
 			case blockType.Berry:
 				gameObject.tag = "Food";
@@ -168,6 +151,7 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
+				unFog();
 				break;
 			case blockType.Larvae:
 				gameObject.tag = "Food";
@@ -176,6 +160,7 @@ public class Block : MonoBehaviour
 				isWalkable = false;
 				isDestructable = false;
 				GetComponent<NavMeshPlus.Components.NavMeshModifier>().ignoreFromBuild = !isWalkable;
+				unFog();
 				break;
 		}
 		if (isFoggy) GetComponent<SpriteRenderer>().sprite = FogSprite;
@@ -184,36 +169,34 @@ public class Block : MonoBehaviour
 	public bool Mine()
 	{
 		bool isDirt = false;
-		if (isClicked)
+		if (isClicked && isDestructable)
 		{
-			if (isDestructable)
+			System.Random rand = new System.Random();
+			if (rand.Next(1, 101) <= probabilityOfFood)
 			{
-				System.Random rand = new System.Random();
-				if (rand.Next(1, 101) <= probabilityOfFood)
+				switch (rand.Next(0, 3))
 				{
-					switch (rand.Next(0, 3))
-					{
-						case 0:
-							isClicked = false;
-							type = blockType.Leaf;
-							break;
-						case 1:
-							isClicked = false;
-							type = blockType.Berry;
-							break;
-						case 2:
-							isClicked = false;
-							type = blockType.Larvae;
-							break;
-					}
+					case 0:
+						isClicked = false;
+						type = blockType.Leaf;
+						break;
+					case 1:
+						isClicked = false;
+						type = blockType.Berry;
+						break;
+					case 2:
+						isClicked = false;
+						type = blockType.Larvae;
+						break;
 				}
-				else
-				{
-					isDirt = true;
-					type = blockType.Background;
-				}
-				ChangeType();
 			}
+			else
+			{
+				isDirt = true;
+				type = blockType.Background;
+			}
+			ChangeType();
+			removeFogAround();
 		}
 		isClicked = false;
 		return isDirt;
@@ -221,7 +204,7 @@ public class Block : MonoBehaviour
 
 	public int Eat()
 	{
-		if(isClicked)
+		if (isClicked)
 		{
 			if (type == blockType.Leaf)
 			{
@@ -259,5 +242,44 @@ public class Block : MonoBehaviour
 		Leaf,
 		Berry,
 		Larvae
+	}
+
+	public int Collumn()
+	{
+		string x = transform.parent.name;
+		x = Regex.Match(x, @"\d+").Value;
+		return int.Parse(x);
+	}
+	public int Row()
+	{
+		string x = transform.name;
+		x = Regex.Match(x, @"\d+").Value;
+		return int.Parse(x);
+	}
+	public string makeCollumn(int x)
+	{
+		return "Blocks (" + x + ")";
+	}
+	public string makeRow(int x)
+	{
+		return "Block (" + x + ")";
+	}
+
+	public void removeFogAround()
+	{
+		int x = Collumn(), y = Row();
+		for (int i = x - 1; i != x + 2; i++)
+		{
+			for (int j = y - 1; j != y + 2; j++)
+			{
+				GameObject.Find(makeCollumn(i) + "/" + makeRow(j)).GetComponent<Block>().unFog();
+			}
+		}
+	}
+
+	public void unFog()
+	{
+		isFoggy = false;
+		ChangeType();
 	}
 }
