@@ -26,6 +26,8 @@ public class Block : MonoBehaviour
 	[SerializeField] Sprite LeafSprite;
 	[SerializeField] Sprite BerrySprite;
 	[SerializeField] Sprite LarvaeSprite;
+	[SerializeField] SpriteRenderer renderer;
+	[SerializeField] Color HighlightColor = Color.magenta;
 
 	private void Start()
 	{
@@ -60,12 +62,18 @@ public class Block : MonoBehaviour
 
 	private async void OnMouseOver()
 	{
+		renderer.color = HighlightColor;
 		if (Input.GetMouseButtonDown(1))
 		{
 			isClicked = true;
 			await Task.Delay(time * 1000);
 			isClicked= false;
 		}
+	}
+
+	private void OnMouseExit()
+	{
+		renderer.color = Color.white;
 	}
 
 
@@ -178,10 +186,8 @@ public class Block : MonoBehaviour
 		bool isDirt = false;
 		if (isClicked)
 		{
-			Debug.Log("mine!");
 			if (isDestructable)
 			{
-				Debug.Log("mine That!");
 				System.Random rand = new System.Random();
 				if (rand.Next(1, 101) <= probabilityOfFood)
 				{
