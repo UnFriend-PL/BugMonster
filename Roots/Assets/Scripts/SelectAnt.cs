@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class SelectAnt : MonoBehaviour
 {
-    //public int HP;
+    public int HP = 1;
     bool isSelected = false;
 
     Vector3 firstPos, secondPos;
